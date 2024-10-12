@@ -1,0 +1,83 @@
+<mat-card class="p-2 min-h-screen">
+    <mat-card-header class="flex flex-column align-items-start">
+        <h2 class="text-5xl mb-2 text-center">Add new products here</h2>
+    </mat-card-header>
+    <form [formGroup]="productForm" (submit)="onSave()">
+        <mat-card-content class="flex flex-column">
+            <mat-form-field>
+                <mat-label>Product name: </mat-label>
+                <input 
+                    type="text" 
+                    name="name" 
+                    id="name" 
+                    matInput 
+                    placeholder="Write product name"
+                    formControlName="name"
+                >
+                <mat-error
+                    *ngIf="productFormValidators.isValidField(productForm, 'name')"
+                >
+                    {{ productFormValidators.getFieldError(productForm, 'name') }}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Product description: </mat-label>
+                <input 
+                    type="text" 
+                    name="description" 
+                    id="description" 
+                    matInput
+                    placeholder="Write product description"
+                    formControlName="description"
+                >
+                <mat-error
+                    *ngIf="productFormValidators.isValidField(productForm, 'description')"
+                >
+                    {{ productFormValidators.getFieldError(productForm, 'description') }}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Product price: </mat-label>
+                <input 
+                    type="number" 
+                    name="price" 
+                    id="price" 
+                    matInput 
+                    placeholder="Write product price"
+                    formControlName="price"
+                >
+                <mat-error
+                    *ngIf="productFormValidators.isValidField(productForm, 'price')"
+                >
+                    {{ productFormValidators.getFieldError(productForm, 'price') }}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Product quantity: </mat-label>
+                <input 
+                    type="number" 
+                    name="quantity" 
+                    id="quantity" 
+                    matInput
+                    placeholder="Write product quantity"
+                    formControlName="quantity"
+                >
+                <mat-error
+                    *ngIf="productFormValidators.isValidField(productForm, 'quantity')"
+                >
+                    {{ productFormValidators.getFieldError(productForm, 'quantity') }}
+                </mat-error>
+            </mat-form-field>
+            <div class="flex justify-content-between">
+                <button mat-raised-button extended class="mt-2" color="primary">
+                    <mat-icon>save</mat-icon>
+                    Save
+                </button>
+                <a [routerLink]="'/pages/products/list'" mat-raised-button extended class="mt-2" color="warn">
+                    <mat-icon>add_shopping_cart</mat-icon>
+                    Go to product list
+                </a>
+            </div>
+        </mat-card-content>
+    </form>
+</mat-card>

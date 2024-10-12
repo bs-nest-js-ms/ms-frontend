@@ -1,0 +1,20 @@
+<!-- header -->
+<mat-toolbar class="mat-elevation-z3 nabvar-color">
+    <button mat-icon-button (click)="toogleCollapse()">
+        <mat-icon class="white-color">menu</mat-icon>
+    </button>
+</mat-toolbar>
+
+<!-- sidebar -->
+<mat-sidenav-container>
+    <mat-sidenav opened mode="side" [style.width]="sidenavWith" style="background-color: #F3F4F6;">
+        <app-shared-sidebar [avatarSize]="collapse ? '30' : '100'"></app-shared-sidebar>
+    </mat-sidenav>
+    
+    <!-- [style.margin-left]="sidenavWith" es para que el contenido se mueva al tope cuando se haga clic en el menu burguer -->
+    <mat-sidenav-content class="content" [style.margin-left]="sidenavWith">
+        <div class="p-1">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

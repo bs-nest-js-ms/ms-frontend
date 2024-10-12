@@ -1,0 +1,33 @@
+<div class="grid grid-nogutter mt-3">
+    <div class="lg:col-6 lg:col-offset-3 md:col-8 md:col-offset-2 col-10 col-offset-1">
+        <mat-card class="p-2">
+            <mat-card-header class="flex flex-column align-items-center">
+                <h2 class="text-xl mb-2 text-center">Sign In</h2>
+                <img srcset="./images/login.png" alt="Login Image" mat-card-md-image>
+            </mat-card-header>
+            <form>
+                <mat-card-content class="flex flex-column">
+                    <mat-form-field>
+                        <mat-label>Email: </mat-label>
+                        <input type="email" name="email" id="email" matInput placeholder="Write your email">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Password: </mat-label>
+                        <input type="password" name="password" id="password" matInput placeholder="Write your password">
+                    </mat-form-field>
+                    <div class="flex justify-content-center">
+                        <button mat-fab extended class="mt-2" color="primary">
+                            <mat-icon>account_circle</mat-icon>
+                            Sign In
+                        </button>
+                    </div>
+                </mat-card-content>
+            </form>
+            <mat-card-footer class="p-1">
+                <div class="flex justify-content-end mt-1 mb-1">
+                    <a routerLink="/auth/sign-up">You do not have an account?, Register Now</a>
+                </div>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+</div>

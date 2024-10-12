@@ -1,0 +1,21 @@
+<div class="sidenav-header">
+    <img srcset="./images/mi-riaton.png" alt="Mi Principe" [width]="avatarSize" [height]="avatarSize">
+    <div class="header-text" [class.hide-header-text]="avatarSize === '30'">
+        <h2>Satoru Gojo</h2>
+        <p>Hechicero Grado Especial</p>
+    </div>
+</div>
+<mat-nav-list>
+    <a 
+        *ngFor="let item of menuItems" 
+        [routerLink]="item.route"
+        class="menu-item"
+        routerLinkActive="selected-menu-item"
+        #routerLinkActiveItem="routerLinkActive"
+        [activated]="routerLinkActiveItem.isActive"
+        mat-list-item
+    >
+        <mat-icon matListItemIcon>{{item.icon}}</mat-icon>
+        <span matListItemTitle>{{item.label}}</span>
+    </a>
+</mat-nav-list>

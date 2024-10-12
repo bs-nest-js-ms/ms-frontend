@@ -1,0 +1,10 @@
+<mat-form-field class="extend-form-field">
+    <mat-label>{{matLabel}}: </mat-label>
+    <input 
+        [type]="type" 
+        [placeholder]="placeHolder"
+        matInput
+        #searchBy
+        (keyup)="onKeyPressAndCatchValue(searchBy.value)"
+    >
+</mat-form-field>

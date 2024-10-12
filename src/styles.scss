@@ -1,1 +1,82 @@
 /* You can add global styles to this file, and also import other style files */
+
+@use "@angular/material" as mat;
+@include mat.core();
+
+:root {
+    --primary-color: #2f68ff;
+    --white-color: #fff;
+    --success-color: #198754;
+    --error-color: #DC3545;
+    --warning-color: #FFC107;
+}
+
+html,
+body {
+    max-height: 100vh;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background: #457fca;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #5691c8, #457fca);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5691c8, #457fca);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.white-color {
+    color: var(--white-color);
+}
+
+// Start Spinner loading
+.fullscreen-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+// End Spinner loading
+
+.overflow-content {
+    overflow: auto;
+}
+
+.extend-form-field {
+    width: 100%;
+}
+
+// Snackbar 
+.mat-mdc-snack-bar-container {
+    &.snackbar-primary-bg {
+        --mdc-snackbar-container-color: var(--primary-color);
+        --mat-mdc-snack-bar-button-color: var(--white-color);
+        --mdc-snackbar-supporting-text-color: var(--white-color);
+    }
+    &.snackbar-success-bg {
+        --mdc-snackbar-container-color: var(--success-color);
+        --mat-mdc-snack-bar-button-color: var(--white-color);
+        --mdc-snackbar-supporting-text-color: var(--white-color);
+    }
+    &.snackbar-error-bg {
+        --mdc-snackbar-container-color: var(--error-color);
+        --mat-mdc-snack-bar-button-color: var(--white-color);
+        --mdc-snackbar-supporting-text-color: var(--white-color);
+    }
+    &.snackbar-warning-bg {
+        --mdc-snackbar-container-color: var(--warning-color);
+        --mat-mdc-snack-bar-button-color: var(--white-color);
+        --mdc-snackbar-supporting-text-color: var(--white-color);
+    }
+}
+// End Snackbar
