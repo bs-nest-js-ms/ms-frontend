@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { UploadFilesDialogComponent } from './components/upload-files-dialog/upload-files-dialog.component';
 
 
 
@@ -21,6 +22,7 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
     LoadingSpinnerComponent,
     DialogComponent,
     SnackbarComponent,
+    UploadFilesDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { SnackbarComponent } from './components/snackbar/snackbar.component';
     InputSearchByComponent,
     SelectByComponent,
     LoadingSpinnerComponent,
+    UploadFilesDialogComponent,
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,63 @@
+.image-preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+.image-card {
+    width: 150px;
+    height: 150px;
+}
+
+.image-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+// Input
+.btcd-f-input {
+    display: inline-block;
+    width: 340px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btcd-f-wrp {
+    cursor: pointer;
+}
+
+.btcd-f-wrp > small {
+    color: gray;
+}
+
+.btcd-f-wrp > button {
+    cursor: pointer;
+    background: #f3f3f3;
+    padding: 5px;
+    display: inline-block;
+    border-radius: 9px;
+    border: none;
+    margin-right: 8px;
+    height: 35px;
+}
+
+.btcd-f-wrp > button > img {
+    width: 24px;
+}
+
+.btcd-f-wrp > button > span,
+.btcd-f-wrp > span,
+.btcd-f-wrp > small {
+    vertical-align: super;
+}
+
+.btcd-f-input > .btcd-f-wrp > input {
+    z-index: 100;
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    height: 37px;
+    cursor: pointer;
+}

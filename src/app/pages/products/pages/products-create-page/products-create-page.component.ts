@@ -50,7 +50,7 @@ export class ProductsCreatePageComponent implements OnInit {
       )
       .subscribe({
         next: (data) => {
-          console.log(data);
+          // console.log(data);
           this.product_id = data.id;
           this.productForm.reset({
             name: data.name,

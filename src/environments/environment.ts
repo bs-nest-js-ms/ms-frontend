@@ -1,11 +1,13 @@
 export const environment = {
-    production: false,
-    apiUrl: 'http://localhost:3500/api', // URL base para la API
-    endpoints: {
-      users: 'users',
-      products: 'products',
-      orders: 'orders',
-    },
-    defaultLimit: 5,
-    defaultSkip: 1,
-  };
+  production: false,
+  productApiRestUrl: 'http://localhost:3001/api',
+  apiUrl: 'http://localhost:3500/api', // URL base para la API
+  endpoints: {
+    users: 'users',
+    products: 'products',
+    orders: 'orders',
+    uploads: 'uploads',
+  },
+  defaultLimit: 5,
+  defaultSkip: 1,
+};

@@ -4,14 +4,25 @@
         <span>Not images available.</span>
     </div>
     <div *ngIf="product.images!.length > 0">
-        <div class="grid">
+        <div class="grid grid-nogutter">
             <div class="lg:col-4 md:col-6 col-12" *ngFor="let image of product.images">
-                <img [src]="image.url" [alt]="'Image from product ' + product.name" mat-card-md-image>
+                <mat-card class="m-2">
+                    <div class="flex flex-column">
+                        <div class="text-center">
+                            <img [src]="image.url" [alt]="'Image from product' + product.name" mat-card-md-image class="p-2 image-fit">
+                        </div>
+                        <div class="text-center">
+                            <button mat-icon-button color="warn" (click)="onDeleteImage(product.id, image)">
+                                <mat-icon>delete_forever</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </mat-card>
             </div>
         </div>
     </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-raised-button color="warn" mat-dialog-close>Exit</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Add New Image Product</button>
+    <button mat-raised-button color="warn" mat-dialog-close>Exit</button>
+    <button mat-raised-button color="primary" cdkFocusInitial (click)="openDialog()">Add New Image Product</button>
 </mat-dialog-actions>

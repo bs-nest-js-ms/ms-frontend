@@ -4,6 +4,7 @@ import { environment } from '../../../../environments';
 import { delay, Observable } from 'rxjs';
 import {
   CreateProduct,
+  ProductDeletedResponse,
   ProductItem,
   ProductsResponse,
   SearchProductBy,
@@ -13,8 +14,10 @@ import {
   providedIn: 'root',
 })
 export class ProductsService {
+  private readonly productApiRestUrl: string = environment.productApiRestUrl;
   private readonly msApiUrl: string = environment.apiUrl;
-  private readonly route: string = environment.endpoints.products;
+  private readonly productsRoute: string = environment.endpoints.products;
+  private readonly uploadsRoute: string = environment.endpoints.uploads;
 
   constructor(private readonly httpClient: HttpClient) {}
 
@@ -38,20 +41,22 @@ export class ProductsService {
     }
 
     return this.httpClient
-      .get<ProductsResponse>(`${this.msApiUrl}/${this.route}?${queryParams}`)
+      .get<ProductsResponse>(
+        `${this.msApiUrl}/${this.productsRoute}?${queryParams}`
+      )
       .pipe(delay(500));
   }
 
   public getProduct(product_id: string): Observable<ProductItem> {
     return this.httpClient.get<ProductItem>(
-      `${this.msApiUrl}/${this.route}/${product_id}`,
+      `${this.msApiUrl}/${this.productsRoute}/${product_id}`,
       {}
     );
   }
 
   public saveProduct(createProduct: CreateProduct): Observable<ProductItem> {
     return this.httpClient.post<ProductItem>(
-      `${this.msApiUrl}/${this.route}`,
+      `${this.msApiUrl}/${this.productsRoute}`,
       createProduct
     );
   }
@@ -62,15 +67,39 @@ export class ProductsService {
   ): Observable<ProductItem> {
     console.log({ ...createProduct, product_id });
     return this.httpClient.patch<ProductItem>(
-      `${this.msApiUrl}/${this.route}/${product_id}`,
+      `${this.msApiUrl}/${this.productsRoute}/${product_id}`,
       createProduct
     );
   }
 
   public deleteProduct(product_id: string): Observable<ProductItem> {
     return this.httpClient.delete<ProductItem>(
-      `${this.msApiUrl}/${this.route}/${product_id}`,
+      `${this.msApiUrl}/${this.productsRoute}/${product_id}`,
       {}
+    );
+  }
+
+  public deleteProductImage(
+    productId: string,
+    productImageId: string
+  ): Observable<ProductDeletedResponse> {
+    return this.httpClient.delete<ProductDeletedResponse>(
+      `${this.msApiUrl}/${this.productsRoute}/${productId}/images/${productImageId}`
+    );
+  }
+
+  public createProductFiles(
+    files: File[],
+    productId: string
+  ): Observable<ProductItem> {
+    const formData = new FormData();
+    files.forEach((file) => {
+      formData.append('files', file);
+    });
+    // return formData.get('files');
+    return this.httpClient.post<ProductItem>(
+      `${this.productApiRestUrl}/${this.uploadsRoute}/product/images/${productId}`,
+      formData
     );
   }
 }
