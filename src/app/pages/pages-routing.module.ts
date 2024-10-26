@@ -8,6 +8,13 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
+    path: 'products',
+    loadChildren: () =>
+      import('./public-store/public-store.module').then(
+        (m) => m.PublicStoreModule
+      ),
+  },
+  {
     path: 'pages',
     component: PagesComponent,
     children: [
@@ -37,8 +44,8 @@ const routes: Routes = [
       { path: '**', redirectTo: 'profile' },
     ],
   },
-  { path: '', redirectTo: 'auth', pathMatch: 'full' },
-  { path: '**', redirectTo: 'auth' },
+  { path: '', redirectTo: 'products', pathMatch: 'full' },
+  { path: '**', redirectTo: 'products' },
 ];
 
 @NgModule({
