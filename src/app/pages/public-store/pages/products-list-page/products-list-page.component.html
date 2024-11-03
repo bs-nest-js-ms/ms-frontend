@@ -1,39 +1,7 @@
 <div class="mt-5 p-3">
     <div class="grid grid-nogutter">
         <div class="lg:col-3 ml:col-4 sm:col-6 col-12 p-3" *ngFor="let product of products">
-            <mat-card>
-                <mat-card-header class="flex flex-column align-items-center">
-                    <img mat-card-lg-image class="mt-2"
-                        [src]="'/images/Image_not_available.png'"
-                        alt="Prduct image">
-                </mat-card-header>
-                <mat-card-content>
-                    <mat-card-content class="flex flex-column">
-                        <p class="mt-2 justify-content-center">Coca Cola</p>
-                        <p>Cold drinks</p>
-                        <p>$19.99</p>
-                        <hr>
-                        <div class="flex flex-row vertical-align-middle align-items-center">
-                            <button mat-icon-button color="warn">
-                                <mat-icon>remove</mat-icon>
-                            </button>
-                            <mat-form-field class="example-full-width" >
-                                <mat-label>Quantity</mat-label>
-                                <input type="number" matInput min="1" max="3">
-                            </mat-form-field>
-                            <button mat-icon-button color="primary">
-                                <mat-icon>add</mat-icon>
-                            </button>
-                        </div>
-                    </mat-card-content>
-                </mat-card-content>
-                <mat-card-actions class="text-center justify-content-center">
-                    <button mat-flat-button>
-                        <mat-icon>add_shopping_cart</mat-icon>
-                        Add to cart
-                    </button>
-                </mat-card-actions>
-            </mat-card>
+            <public-store-product-list-item [productItem]="product" />
         </div>
     </div>
     <div class="grid grid-nogutter">

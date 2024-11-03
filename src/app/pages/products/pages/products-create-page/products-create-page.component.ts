@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { switchMap } from 'rxjs';
 import { ProductItem } from '../../interfaces';
+import { openSnackBar } from '../../../../shared/helpers';
 
 @Component({
   selector: 'app-products-create-page',
@@ -67,7 +68,7 @@ export class ProductsCreatePageComponent implements OnInit {
 
   public onSave(): void {
     if (this.productForm.invalid) {
-      this.openSnackBar('Product form not valid, please check the form', 'Close',  'snackbar-error-bg');
+      openSnackBar('Product form not valid, please check the form', 'Close',  'snackbar-error-bg', this.snackbarDurationInSeconds, this.snackbar);
     } else {
       // console.log('Preparing to save this product', this.productForm.value);
       if (this.product_id.trim().length === 0) {
@@ -76,12 +77,12 @@ export class ProductsCreatePageComponent implements OnInit {
           next: (product) => {
             // console.log(product);
             this.productForm.reset();
-            this.openSnackBar(`Product ${product.name} created successfully`, 'Close',  'snackbar-success-bg');
+            openSnackBar(`Product ${product.name} created successfully`, 'Close',  'snackbar-success-bg', this.snackbarDurationInSeconds, this.snackbar);
             this.router.navigate(['/pages/products/list']);
           },
           error: (error) => {
             // console.log(error.error.message.join(','));
-            this.openSnackBar(`Error in form: ${error.error.message}`, 'Close', 'snackbar-error-bg');
+            openSnackBar(`Error in form: ${error.error.message}`, 'Close', 'snackbar-error-bg', this.snackbarDurationInSeconds, this.snackbar);
           },
         });
       } else {
@@ -90,12 +91,12 @@ export class ProductsCreatePageComponent implements OnInit {
             next: (product) => {
               // console.log(product);
               this.productForm.reset();
-              this.openSnackBar(`Product ${product.name} updated successfully`, 'Close',  'snackbar-success-bg');
+              openSnackBar(`Product ${product.name} updated successfully`, 'Close',  'snackbar-success-bg', this.snackbarDurationInSeconds, this.snackbar);
               this.router.navigate(['/pages/products/list']);
             },
             error: (error) => {
               // console.log(error);
-              this.openSnackBar(`Error in product form: ${error.error.message}`, 'Close', 'snackbar-error-bg')
+              openSnackBar(`Error in product form: ${error.error.message}`, 'Close', 'snackbar-error-bg, this.snackbarDurationInSeconds, this.snackbar', this.snackbarDurationInSeconds, this.snackbar);
             }
           });
       }
@@ -103,14 +104,4 @@ export class ProductsCreatePageComponent implements OnInit {
     }
   }
 
-  public openSnackBar(title: string, optionToClose: string, bgSnackbar: string) {
-    this.snackbar.openFromComponent(SnackbarComponent, {
-      duration: this.snackbarDurationInSeconds * 1000,
-      data: {
-        title: title,
-        optionToClose: optionToClose,
-      },
-      panelClass: [bgSnackbar],
-    });
-  }
 }

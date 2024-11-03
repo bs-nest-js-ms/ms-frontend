@@ -1,6 +1,6 @@
 export const environmentProd = {
   production: false,
-  productApiRestUrl: 'http://localhost:3001/api',
+  productApiRestUrl: 'http://localhost:4000/api',
   apiUrl: 'http://localhost:3500/api', // URL base para la API
   endpoints: {
     users: 'users',

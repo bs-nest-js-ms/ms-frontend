@@ -8,6 +8,7 @@ import { DialogComponent } from '../../../../shared/components/dialog/dialog.com
 import { Router } from '@angular/router';
 import { SnackbarComponent } from '../../../../shared/components/snackbar/snackbar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { openSnackBar } from '../../../../shared/helpers';
 
 @Component({
   selector: 'app-products-list-page',
@@ -105,10 +106,10 @@ export class ProductsListPageComponent implements AfterViewInit, OnInit {
         next: (data) => {
           // console.log(data);
           this.getProducts();
-          this.openSnackBar(`Product ${data.name} deleted successfully`, 'Close', 'snackbar-success-bg');
+          openSnackBar(`Product ${data.name} deleted successfully`, 'Close', 'snackbar-success-bg', 5000, this.snackbar);
         },
         error: (error) => {
-          this.openSnackBar(`Error: deleting product: ${error.error.message}`, 'Close', 'snackbar-error-bg');
+          openSnackBar(`Error: deleting product: ${error.error.message}`, 'Close', 'snackbar-error-bg', 5000, this.snackbar);
         },
       });
   }
@@ -127,14 +128,4 @@ export class ProductsListPageComponent implements AfterViewInit, OnInit {
     });
   }
 
-  public openSnackBar(title: string, optionToClose: string, bgSnackbar: string) {
-    this.snackbar.openFromComponent(SnackbarComponent, {
-      duration: 5000,
-      data: {
-        title: title,
-        optionToClose: optionToClose,
-      },
-      panelClass: [bgSnackbar],
-    });
-  }
 }

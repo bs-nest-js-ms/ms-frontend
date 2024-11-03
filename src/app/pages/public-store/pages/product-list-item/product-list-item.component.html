@@ -1,0 +1,36 @@
+<mat-card>
+    <mat-card-header class="flex flex-column align-items-center">
+        <img mat-card-lg-image
+            [src]="productItem.images?.length === 0 ? '/images/Image_not_available.png' : productItem.images![0].url"
+            [alt]="'Product ' + productItem.name + ' image.'">
+    </mat-card-header>
+    <mat-card-content>
+        <mat-card-content class="flex flex-column">
+            <div class="flex flex-column text-center">
+                <p class="mt-2 justify-content-center">{{productItem.name}}</p>
+                <p>{{productItem.description}}</p>
+                <hr>
+                <p>{{productItem.price | currency}}</p>
+            </div>
+            <div class="flex flex-row justify-content-center m-auto">
+                <div class="flex flex-row p-1" style="background-color: #E6ECF8; border-radius: 8px;">                 
+                    <button mat-raised-button (click)="onAddToCardValue(-1, productItem.quantity)" style="background-color: #E6ECF8; border: none; box-shadow: none;">
+                        -
+                    </button>
+                    <span class="m-auto ml-2 mr-2">
+                        {{counter}}
+                    </span>
+                    <button mat-raised-button (click)="onAddToCardValue(1, productItem.quantity)" style="background-color: #E6ECF8; border: none; box-shadow: none;">
+                        +
+                    </button>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card-content>
+    <mat-card-actions class="text-center justify-content-center">
+        <button mat-flat-button (click)="onAddToCart(productItem)">
+            <mat-icon>add_shopping_cart</mat-icon>
+            Add to cart
+        </button>
+    </mat-card-actions>
+</mat-card>
